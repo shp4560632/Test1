@@ -27,12 +27,24 @@ print(citycode)
 #print(html)
 
 if citycode:
-    url = ('http://www.weather.com.cn/data/cityinfo/%s.html' % citycode)
-    content = urllib2.urlopen(url,timeout=30).read()
-    print content
-
+    try:
+        url = ('http://www.weather.com.cn/data/cityinfo/%s.html' % citycode)
+        content = urllib2.urlopen(url,timeout=30).read()
+        data = json.loads(content)
+        result = data['weatherinfo']
+        weather_info = ('%s\n%s--%s') % (result['weather'],result['temp1'],result['temp2'])
+        print weather_info
+    except:
+        print(u'查询失败')
+else:
+    print(u'没有该城市')
+    raw_input()
 
 #print city
-raw_input()
+#raw_input()
 #data=json.loads(content)
+#print data
+#print type(data)
+#print type(content)
+
 #re=data['weatherinfo']
