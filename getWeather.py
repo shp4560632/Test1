@@ -27,7 +27,7 @@ print(citycode)
 #print(html)
 
 if citycode:
-    url = ('http://www.weather.com.cn/weather15d/%s.shtml' % citycode)
+    url = ('http://www.weather.com.cn/data/cityinfo/%s.html' % citycode)
     content = urllib2.urlopen(url,timeout=30).read()
     print content
 
